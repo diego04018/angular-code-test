@@ -12,47 +12,28 @@
         />
       </mat-form-field>
       <table mat-table [dataSource]="dataSource" matSort>
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
-          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="last_name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
-          <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="age">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Edad</th>
-          <td mat-cell *matCellDef="let element">{{ element.age }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="address">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</th>
-          <td mat-cell *matCellDef="let element">{{ element.address }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="email">
+        <ng-container
+          *ngFor="let column of tableColumns"
+          [matColumnDef]="column.columnDef"
+        >
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            Correo electrónico
+            {{ column.header }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+          <td mat-cell *matCellDef="let row">
+            {{ column.cell(row) }}
+          </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="renderColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: renderColumns"></tr>
 
-        <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
           <td class="mat-cell" colspan="4">
             No hay resultados para la busqueda de : "{{ input.value }}"
           </td>
         </tr>
       </table>
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        aria-label="Select page of users"
-      ></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
   </mat-card-content>
 </mat-card>
