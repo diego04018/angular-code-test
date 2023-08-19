@@ -1,17 +1,9 @@
-.table-containet {
-  min-width: 70%;
-}
-
-.main-container {
+.main-container-table {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
-  padding: 40px;
-  justify-content: center;
-  align-items: center;
+  padding: 20px 40px;
 
   &__title {
-    min-width: 70%;
     font-size: 35px;
   }
 }
@@ -22,11 +14,19 @@
   justify-content: center;
 }
 
-@media only screen and (max-width: 600px) {
-  .main-container {
+.card-container-table {
+  margin: 3rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .main-container-table {
     align-items: baseline;
     &__title {
       align-self: baseline;
     }
+  }
+
+  .card-container-table {
+    width: max-content;
   }
 }

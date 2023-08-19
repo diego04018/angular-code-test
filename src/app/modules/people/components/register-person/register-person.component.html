@@ -1,74 +1,78 @@
-<div class="main-container">
-  <div class="person-form-container">
-    <h1 class="person-form-container__title">Ingrese una persona</h1>
-    <form [formGroup]="form">
-      <mat-form-field class="input-container">
-        <mat-label>Digite el nombre</mat-label>
-        <input matInput formControlName="name" required />
-        <mat-error *ngIf="checkErrors('name', 'required')"
-          >el nombre es requerido</mat-error
-        >
-        <mat-error *ngIf="checkErrors('name', 'minlength')"
-          >la longitud minima es de 3 caracteres</mat-error
-        >
-      </mat-form-field>
-      <mat-form-field class="input-container">
-        <mat-label>Digite el apellido</mat-label>
-        <input matInput formControlName="lastName" required />
-        <mat-error *ngIf="checkErrors('lastName', 'required')"
-          >el nombre es requerido</mat-error
-        >
-        <mat-error *ngIf="checkErrors('lastName', 'minlength')"
-          >la longitud minima es de 3 caracteres</mat-error
-        >
-      </mat-form-field>
+<mat-card class="card-container-form">
+  <mat-card-content
+    ><div class="main-container">
+      <div class="person-form-container">
+        <h1 class="person-form-container__title">Ingrese una persona</h1>
+        <form [formGroup]="form">
+          <mat-form-field class="input-container">
+            <mat-label>Digite el nombre</mat-label>
+            <input matInput formControlName="name" required />
+            <mat-error *ngIf="checkErrors('name', 'required')"
+              >el nombre es requerido</mat-error
+            >
+            <mat-error *ngIf="checkErrors('name', 'minlength')"
+              >la longitud minima es de 3 caracteres</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field class="input-container">
+            <mat-label>Digite el apellido</mat-label>
+            <input matInput formControlName="lastName" required />
+            <mat-error *ngIf="checkErrors('lastName', 'required')"
+              >el nombre es requerido</mat-error
+            >
+            <mat-error *ngIf="checkErrors('lastName', 'minlength')"
+              >la longitud minima es de 3 caracteres</mat-error
+            >
+          </mat-form-field>
 
-      <mat-form-field class="input-container">
-        <mat-label>Digite la edad</mat-label>
-        <input
-          matInput
-          formControlName="age"
-          type="number"
-          required
-          pattern="[0-9]+"
-        />
-        <mat-error *ngIf="checkErrors('age', 'required')"
-          >la edad es requerida</mat-error
-        >
-        <mat-error *ngIf="checkErrors('age', 'min')"
-          >la edad debe ser igual o mayor a 18</mat-error
-        >
-      </mat-form-field>
+          <mat-form-field class="input-container">
+            <mat-label>Digite la edad</mat-label>
+            <input
+              matInput
+              formControlName="age"
+              type="number"
+              required
+              pattern="[0-9]+"
+            />
+            <mat-error *ngIf="checkErrors('age', 'required')"
+              >la edad es requerida</mat-error
+            >
+            <mat-error *ngIf="checkErrors('age', 'min')"
+              >la edad debe ser igual o mayor a 18</mat-error
+            >
+          </mat-form-field>
 
-      <mat-form-field class="input-container">
-        <mat-label>Digite la direccion</mat-label>
-        <input matInput formControlName="address" />
-      </mat-form-field>
+          <mat-form-field class="input-container">
+            <mat-label>Digite la direccion</mat-label>
+            <input matInput formControlName="address" />
+          </mat-form-field>
 
-      <mat-form-field class="input-container">
-        <mat-label>Digite el correo electronico</mat-label>
-        <input
-          matInput
-          formControlName="email"
-          required
-          placeholder="Ejemplo pat@dominio.com"
-        />
-        <mat-error *ngIf="checkErrors('email', 'required')"
-          >el correo electronico es requerido</mat-error
+          <mat-form-field class="input-container">
+            <mat-label>Digite el correo electronico</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              required
+              placeholder="Ejemplo pat@dominio.com"
+            />
+            <mat-error *ngIf="checkErrors('email', 'required')"
+              >el correo electronico es requerido</mat-error
+            >
+            <mat-error *ngIf="checkErrors('email', 'email')"
+              >el correo electronico es invalido</mat-error
+            >
+          </mat-form-field>
+        </form>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="form.invalid || disableControls"
+          (click)="save()"
+          class="btn-container"
         >
-        <mat-error *ngIf="checkErrors('email', 'email')"
-          >el correo electronico es invalido</mat-error
-        >
-      </mat-form-field>
-    </form>
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="form.invalid || disableControls"
-      (click)="save()"
-      class="btn-container"
-    >
-      Enviar
-    </button>
-  </div>
-</div>
+          Enviar
+        </button>
+      </div>
+    </div></mat-card-content
+  >
+</mat-card>

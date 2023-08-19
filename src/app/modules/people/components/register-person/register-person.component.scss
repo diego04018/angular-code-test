@@ -1,7 +1,6 @@
 .main-container {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
   padding: 40px;
   justify-content: center;
   align-items: center;
@@ -11,7 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width: 30%;
+
   &__title {
     min-width: 70%;
     font-size: 35px;
@@ -25,6 +24,18 @@
 .btn-container {
   width: 150px;
   height: 50px;
+}
+
+.card-container-form {
+  margin: 5% 25% 10% 25%;
+  width: 50%;
+}
+
+@media only screen and (max-width: 700px) {
+  .card-container-form {
+    margin: 5% 5% 5% 5%;
+    width: 88%;
+  }
 }
 
 input::-webkit-outer-spin-button,
