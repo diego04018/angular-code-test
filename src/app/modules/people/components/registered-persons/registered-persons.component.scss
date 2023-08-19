@@ -1,0 +1,26 @@
+.table-containet {
+  min-width: 70%;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    min-width: 70%;
+    font-size: 35px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-container {
+    align-items: baseline;
+    &__title {
+      align-self: baseline;
+    }
+  }
+}

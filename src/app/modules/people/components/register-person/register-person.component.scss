@@ -1,0 +1,38 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.person-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 30%;
+  &__title {
+    min-width: 70%;
+    font-size: 35px;
+  }
+}
+
+.input-container {
+  margin-bottom: 15px;
+}
+
+.btn-container {
+  width: 150px;
+  height: 50px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
