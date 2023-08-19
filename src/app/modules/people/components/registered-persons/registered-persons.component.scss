@@ -16,6 +16,12 @@
   }
 }
 
+.spinner-container {
+  display: flex;
+  margin-top: 15%;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 600px) {
   .main-container {
     align-items: baseline;
