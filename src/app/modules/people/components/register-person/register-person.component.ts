@@ -1,13 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, take, throwError } from 'rxjs';
 import { Person } from 'src/app/data/interfaces/person.interface';
+import { NotificationService } from 'src/app/services/notification.service';
 import { PersonService } from 'src/app/services/person.service';
 
 @Component({
@@ -15,7 +11,7 @@ import { PersonService } from 'src/app/services/person.service';
   templateUrl: './register-person.component.html',
   styleUrls: ['./register-person.component.scss'],
 })
-export class RegisterPersonComponent implements OnInit {
+export class RegisterPersonComponent {
   form = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     lastName: new FormControl('', [
@@ -28,9 +24,11 @@ export class RegisterPersonComponent implements OnInit {
   });
   disableControls = false;
 
-  constructor(private personService: PersonService, private router: Router) {}
-
-  ngOnInit(): void {}
+  constructor(
+    private personService: PersonService,
+    private router: Router,
+    private notify: NotificationService
+  ) {}
 
   checkErrors(control: string, error: string): boolean {
     let hasError: boolean;
@@ -66,16 +64,19 @@ export class RegisterPersonComponent implements OnInit {
       .registerPerson(dataPerson)
       .pipe(
         take(1),
-        catchError((err) =>
+        catchError(() =>
           throwError(() => {
-            let errorMsj = 'Lo sentimos, no se logro agregar la persona';
-            if (err.status === 409) {
-              errorMsj = 'Error de validacion de los campos';
-            }
+            this.notify.errorMessage(
+              'ha ocurrido un error no se logro agregar la persona'
+            );
+            this.disableControls = false;
           })
         )
       )
-      .subscribe((res: any) => {
+      .subscribe(() => {
+        this.notify.confirmationMessage(
+          'La persona se ha ingresado con exito.'
+        );
         this.router.navigate(['/registered-persons']);
       });
     this.disableControls = true;

@@ -10,3 +10,22 @@ body {
 mat-form-field {
   width: 100%;
 }
+
+.confirmation-toast > div > div {
+  background-color: green;
+  text-align: center;
+}
+
+.error-toast > div > div {
+  background-color: red;
+  text-align: center;
+  font-size: 20px;
+}
+
+.error-toast > div {
+  padding: 0px;
+}
+
+.confirmation-toast > div {
+  padding: 0px;
+}

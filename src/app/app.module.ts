@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { PeopleModule } from './modules/people/people.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -13,6 +14,7 @@ import { PeopleModule } from './modules/people/people.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     PeopleModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
