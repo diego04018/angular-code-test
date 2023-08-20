@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { sanckBarDuration } from '../data/constants/services';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class NotificationService {
 
   confirmationMessage(message: string): void {
     this.snackBar.open(message, '', {
-      duration: 4000,
+      duration: sanckBarDuration,
       horizontalPosition: 'center',
       verticalPosition: 'top',
       panelClass: 'confirmation-toast',
@@ -17,7 +18,7 @@ export class NotificationService {
   }
   errorMessage(message: string): void {
     this.snackBar.open(message, '', {
-      duration: 4000,
+      duration: sanckBarDuration,
       horizontalPosition: 'center',
       verticalPosition: 'top',
       panelClass: 'error-toast',

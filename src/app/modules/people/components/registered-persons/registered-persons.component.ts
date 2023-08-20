@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,6 +20,7 @@ export class RegisteredPersonsComponent implements AfterViewInit {
     private notify: NotificationService
   ) {}
   dataSource!: MatTableDataSource<Person>;
+  isSpinnerLoading = true;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   tableColumns = columns;
@@ -35,17 +36,19 @@ export class RegisteredPersonsComponent implements AfterViewInit {
             this.notify.errorMessage(
               'ha ocurrido un error porfavor vuelva a intentarlo'
             );
+            this.isSpinnerLoading = false;
           })
         )
       )
       .subscribe((res: People) => {
         this.dataSource = new MatTableDataSource(res.people);
         this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
         this.paginator._intl.itemsPerPageLabel =
           PaginationOptions.ITEMS_PER_PAGE;
         this.paginator._intl.nextPageLabel = PaginationOptions.NEXT_PAGE;
         this.paginator._intl.previousPageLabel = PaginationOptions.LAST_PAGE;
-        this.dataSource.paginator = this.paginator;
+        this.isSpinnerLoading = false;
       });
   }
 

@@ -18,7 +18,7 @@
             <mat-label>Digite el apellido</mat-label>
             <input matInput formControlName="lastName" required />
             <mat-error *ngIf="checkErrors('lastName', 'required')"
-              >el nombre es requerido</mat-error
+              >el apellido es requerido</mat-error
             >
             <mat-error *ngIf="checkErrors('lastName', 'minlength')"
               >la longitud minima es de 3 caracteres</mat-error

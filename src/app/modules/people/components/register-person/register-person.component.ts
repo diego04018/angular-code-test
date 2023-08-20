@@ -22,6 +22,7 @@ export class RegisterPersonComponent {
     address: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
   });
+
   disableControls = false;
 
   constructor(

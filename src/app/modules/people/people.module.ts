@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PeopleRoutingModule } from './people-routing.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [RegisteredPersonsComponent, RegisterPersonComponent],
   imports: [
@@ -17,12 +19,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     FormsModule,
     ReactiveFormsModule,
+    PeopleRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
     MatSortModule,
     MatPaginatorModule,
+    MatProgressSpinnerModule,
   ],
   exports: [RegisteredPersonsComponent, RegisterPersonComponent],
 })
